@@ -4,8 +4,16 @@ import linkedinLogo from "../src/linkedin.svg";
 import twitterLogo from "../src/twitter.svg";
 import portfolioLogo from "../src/portfolio.svg";
 import bg from "../background.jpg";
+import { useState } from "react";
 
 export default function App() {
+  const [alertInfo, setAlertInfo] = useState("block");
+  // const []
+
+  const checkLucky = () => {
+    const date = dateInput;
+  };
+
   return (
     <div
       style={{
@@ -23,10 +31,15 @@ export default function App() {
           <a href="#mainSection">Click to scroll down to check!</a>
         </section>
         <section id="mainSection">
-          <p className="privacyNotice">
+          <p className="privacyNotice" style={{ display: `${alertInfo}` }}>
             <h3>Privacy Notice!</h3>
             We are not storing your data.
-            <span role="img" aria-labelledby="crossIcon" className="crossIcon">
+            <span
+              role="img"
+              aria-labelledby="crossIcon"
+              className="crossIcon"
+              onClick={() => setAlertInfo("none")}
+            >
               &#10060;
             </span>
           </p>
@@ -38,7 +51,15 @@ export default function App() {
               </label>
             </p>
             <p>
-              <input required type="date" id="date" name="date" />
+              <input
+                required
+                type="date"
+                id="date"
+                name="date"
+                onChange={(e) => {
+                  dateInput = e.target.value;
+                }}
+              />
             </p>
             <p>
               <label htmlFor="number">
@@ -46,10 +67,16 @@ export default function App() {
               </label>
             </p>
             <p>
-              <input required type="number" id="number" name="number" />
+              <input
+                required
+                type="number"
+                id="number"
+                name="number"
+                onChange={(e) => (luckyNumber = e.target.value)}
+              />
             </p>
             <p>
-              <button type="button" className="btn">
+              <button type="button" className="btn" onClick={checkLucky}>
                 Check
               </button>
             </p>
@@ -99,7 +126,7 @@ export default function App() {
               <a
                 href="#alertBox"
                 onClick={() => {
-                  setDisplayAlert("flex");
+                  setAlertInfo("block");
                 }}
                 style={{ cursor: "pointer", color: "Black" }}
               >
