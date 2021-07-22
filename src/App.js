@@ -3,10 +3,20 @@ import githubLogo from "../src/github.svg";
 import linkedinLogo from "../src/linkedin.svg";
 import twitterLogo from "../src/twitter.svg";
 import portfolioLogo from "../src/portfolio.svg";
+import bg from "../background.jpg";
 
 export default function App() {
   return (
-    <div className="App">
+    <div
+      style={{
+        minHeight: "200vh",
+        backgroundAttachment: "fixed",
+        backgroundImage: `url("${bg}")`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center"
+      }}
+      className="App"
+    >
       <div className="container">
         <section className="nitro">
           <h1>Is Your Birthday Lucky?</h1>
@@ -47,22 +57,38 @@ export default function App() {
           <footer>
             <ul>
               <li className="footerLink">
-                <a href="https://github.com/adhish-bahl">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://github.com/adhish-bahl"
+                >
                   <img src={githubLogo} alt="github" />
                 </a>
               </li>
               <li className="footerLink">
-                <a href="https://twitter.com/adhish_bahl">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://twitter.com/adhish_bahl"
+                >
                   <img src={twitterLogo} alt="twitter"></img>
                 </a>
               </li>
               <li className="footerLink">
-                <a href="https://www.linkedin.com/in/adhish-bahl-4113591b7/">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.linkedin.com/in/adhish-bahl-4113591b7/"
+                >
                   <img src={linkedinLogo} alt="linkedin"></img>
                 </a>
               </li>
               <li className="footerLink">
-                <a href="http://adhish-bahl.netlify.app/">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="http://adhish-bahl.netlify.app/"
+                >
                   <img src={portfolioLogo} alt="portfolio"></img>
                 </a>
               </li>
