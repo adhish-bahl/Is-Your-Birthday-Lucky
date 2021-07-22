@@ -6,12 +6,12 @@ export default function App() {
       <div className="container">
         <section className="nitro">
           <h1>Is Your Birthday Lucky?</h1>
-          <a href="#check">Scroll down to check!</a>
+          <a href="#mainSection">Scroll down to check!</a>
         </section>
         <section id="mainSection">
           <p className="privacyNotice">
-            <h2>Privacy Notice!</h2>
-            We are not storing your Data
+            <h3>Privacy Notice!</h3>
+            We are not storing your data.
             <span role="img" aria-labelledby="crossIcon" className="crossIcon">
               &#10060;
             </span>
@@ -19,19 +19,25 @@ export default function App() {
           <h1>Enter Your Birthdate and Lucky Number below to continue</h1>
           <form>
             <p>
-              <label htmlFor="date">Birth Date</label>
+              <label htmlFor="date">
+                <h2>Birth Date</h2>
+              </label>
             </p>
             <p>
               <input type="date" id="date" name="date" />
             </p>
             <p>
-              <label htmlFor="number">Lucky Number</label>
+              <label htmlFor="number">
+                <h2>Lucky Number</h2>
+              </label>
             </p>
             <p>
               <input type="number" id="number" name="number" />
             </p>
             <p>
-              <button type="button">Check</button>
+              <button type="button" className="btn">
+                Check
+              </button>
             </p>
           </form>
           <footer>
