@@ -66,7 +66,7 @@ export default function App() {
             </span>
           </p>
           <h1>Enter Your Birthdate and Lucky Number below to continue</h1>
-          <form>
+          <form onSubmit={checkLucky}>
             <p>
               <label htmlFor="date">
                 <h2>Birth Date</h2>
@@ -80,7 +80,7 @@ export default function App() {
                 onChange={(e) => {
                   dateInput = e.target.value;
                 }}
-                required="required"
+                required
               />
             </p>
             <p>
@@ -93,6 +93,7 @@ export default function App() {
                 type="number"
                 id="number"
                 name="number"
+                min="1"
                 onChange={(e) => {
                   luckyNumber = e.target.value;
                 }}
@@ -100,7 +101,7 @@ export default function App() {
               />
             </p>
             <p>
-              <button type="submit" className="btn" onClick={checkLucky}>
+              <button type="submit" className="btn">
                 Check
               </button>
             </p>
