@@ -1,23 +1,45 @@
+import { useState } from "react";
 import "./styles.css";
+import bg from "../background.jpg";
+import happyImg from "../src/happy.png";
+import unhappyImg from "../src/unhappy.png";
 import githubLogo from "../src/github.svg";
 import linkedinLogo from "../src/linkedin.svg";
 import twitterLogo from "../src/twitter.svg";
 import portfolioLogo from "../src/portfolio.svg";
-import bg from "../background.jpg";
-import { useState } from "react";
 
 export default function App() {
   const [alertInfo, setAlertInfo] = useState("block");
+  const [yesLuckyDiv, setYesLuckyDiv] = useState("none");
+  const [noLuckyDiv, setNoLuckyDiv] = useState("none");
+  let dateInput, luckyNumber;
   // const []
 
-  const checkLucky = () => {
-    const date = dateInput;
+  const checkLucky = (e) => {
+    e.preventDefault();
+    let date = dateInput;
+    date = Number(date.split("-").join(""));
+    let lucky = Number(luckyNumber);
+    // console.log(date, lucky);
+    let sum = 0;
+    while (date !== 0) {
+      sum = sum + (date % 10);
+      date = Math.floor(date / 10);
+    }
+    console.log(sum, lucky);
+    if (sum % lucky === 0) {
+      setYesLuckyDiv("block");
+      setNoLuckyDiv("none");
+    } else {
+      setYesLuckyDiv("none");
+      setNoLuckyDiv("block");
+    }
   };
 
   return (
     <div
       style={{
-        minHeight: "200vh",
+        minHeight: "270vh",
         backgroundAttachment: "fixed",
         backgroundImage: `url("${bg}")`,
         backgroundRepeat: "no-repeat",
@@ -52,13 +74,13 @@ export default function App() {
             </p>
             <p>
               <input
-                required
                 type="date"
                 id="date"
                 name="date"
                 onChange={(e) => {
                   dateInput = e.target.value;
                 }}
+                required="required"
               />
             </p>
             <p>
@@ -68,19 +90,29 @@ export default function App() {
             </p>
             <p>
               <input
-                required
                 type="number"
                 id="number"
                 name="number"
-                onChange={(e) => (luckyNumber = e.target.value)}
+                onChange={(e) => {
+                  luckyNumber = e.target.value;
+                }}
+                required="required"
               />
             </p>
             <p>
-              <button type="button" className="btn" onClick={checkLucky}>
+              <button type="submit" className="btn" onClick={checkLucky}>
                 Check
               </button>
             </p>
           </form>
+          <div style={{ display: `${yesLuckyDiv}` }} className="yesLucky">
+            <h2>Yeeyeyeiii, your birthday is lucky for you!</h2>
+            <img src={happyImg} alt="happy" className="resultImg" />
+          </div>
+          <div style={{ display: `${noLuckyDiv}` }} className="noLucky">
+            <h2>Oops, your birthday is not lucky for you!</h2>
+            <img src={unhappyImg} alt="unhappy" className="resultImg" />
+          </div>
           <footer>
             <ul>
               <li className="footerLink">
